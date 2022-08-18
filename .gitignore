@@ -4,6 +4,7 @@
 /.idea/imc.iml
 /.idea/misc.xml
 /.idea/modules.xml
-/.idea/inspectionProfiles
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
 /venv_imc
 imc.spec
