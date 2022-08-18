@@ -25,8 +25,6 @@ layout = [
     [sg.Text('Desenvolvedor: Gustavo Duran', size=(40, 0))]
 ]
 
-"""M = 0
-H = 1"""
 sexo = 'sexo'
 
 janela = sg.Window('Calculo IMC', layout)
