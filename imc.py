@@ -11,7 +11,7 @@ def titulo(tit):
 data = datetime.now()
 data_string = data.strftime('%d/%m/%Y %H:%M')
 
-sg.theme('Dark Grey 15')
+sg.theme('Dark Purple7')
 
 layout = [
     [sg.Text('Calculo IMC, Percentual de gordura e superfície corporal')],
@@ -65,31 +65,33 @@ while True:
 
         peso_texto = str(peso).replace('.', ',')
         altura_texto = str(altura).replace('.', ',')
+        sc_texto = str(altura).replace('.', ',')
+        pg_texto = str(altura).replace('.', ',')
 
-        print(nome)
-        print(f'Peso {peso_texto}kg')
-        print(f'Altura {altura_texto}')
-        print(f'Idade {idade} anos')
-        print(f'IMC {imc:.2f}')
-        print(f'Superfície Corporal {sc:.2f}m2')
-        print(f'Percentual de gordura{pg:.2f}%')
+        print(f' • {nome}')
+        print(f' • Peso {peso_texto}kg')
+        print(f' • Altura {altura_texto}')
+        print(f' • Idade {idade} anos')
+        print(f' • IMC {imc:.1f}')
+        print(f' • Superfície Corporal {sc_texto}m2')
+        print(f' • Percentual de gordura {pg_texto}%')
 
         if imc < 16:
-            print(f'{nome}, você está abaixo do peso (grau I)')
+            print(f' • {nome}, você está abaixo do peso (grau I)')
         elif imc < 17:
-            print(f'{nome}, você está abaixo peso (grau II)')
+            print(f' • {nome}, você está abaixo peso (grau II)')
         elif imc < 18.5:
-            print(f'{nome}, você está abaixo peso (grau III)')
+            print(f' • {nome}, você está abaixo peso (grau III)')
         elif imc < 25:
-            print(f'Parabéns {nome}, você está com o Peso ideal')
+            print(f' • Parabéns {nome}, você está com o Peso ideal')
         elif imc < 30:
-            print(f'{nome}, você está com Sobrepeso')
+            print(f' • {nome}, você está com Sobrepeso')
         elif imc < 35:
-            print(f'{nome}, você está no grau I de Obesidade')
+            print(f' • {nome}, você está no grau I de Obesidade')
         elif imc < 40:
-            print(f'{nome}, você está no grau II de Obesidade')
+            print(f' • {nome}, você está no grau II de Obesidade')
         else:
-            print(f'{nome}, você está no grau III de Obesidade')
+            print(f' • {nome}, você está no grau III de Obesidade')
 
 janela.close()
 
