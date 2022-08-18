@@ -1,7 +1,10 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-/.idea
+/.idea/imc.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles
 /venv_imc
 imc.spec
 
