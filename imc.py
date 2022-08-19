@@ -17,7 +17,7 @@ layout = [
     [sg.Text('Calculo IMC, Percentual de gordura e superfície corporal')],
     [sg.Text('Digite seu NOME', size=(14, 1)), sg.Input(size=(30, 1), key='nome')],
     [sg.Text('Digite seu PESO', size=(14, 1)), sg.Input(size=(10, 1), key='peso')],
-    [sg.Text('Digite sua ALTURA', size=(14, 1)), sg.Input(size=(10, 1), key='altura')],
+    [sg.Text('Digite sua ALTURA', size=(14, 1)), sg.Input(size=(10, 1), key='altura'), sg.Text('em centimetros')],
     [sg.Text('Digite sua IDADE', size=(14, 1)), sg.Input(size=(4, 1), key='idade')],
     [sg.Radio('Homem', 1, key='sexo'), sg.Radio('Mulher', 0, key='sexo')],
     [sg.Button('Calcular'), sg.Button('Limpar', key='clear'), sg.Button('Sair')],
@@ -38,12 +38,13 @@ while True:
     if evento == 'Calcular':
         nome_entrada = valores['nome']
         peso_entrada = valores['peso']
-        altura_entrada = valores['altura']
+        altura_centimetros = valores['altura']
         idade_entrada = valores['idade']
         sexo_entrada = valores['sexo']
         valor_nome = str(nome_entrada)
         valor_peso = float(peso_entrada)
-        valor_altura = float(altura_entrada)
+        valor_altura = float(altura_centimetros)
+        altura_metros = valor_altura / 100
         valor_idade = int(idade_entrada)
         valor_sexo = int(sexo_entrada)
 
@@ -52,19 +53,21 @@ while True:
         else:
             sexo = 1
 
-        imc = valor_peso / valor_altura ** 2
-        pg = ((1.20 * imc) + (0.23 * valor_idade) - (10.8 * valor_sexo) - 5.4)
-        sc = (((valor_peso * 4) + 7) / (valor_peso + 90))
+        imc = valor_peso / altura_metros ** 2
+        pg1 = ((1.20 * imc) + (0.23 * valor_idade) - (10.8 * valor_sexo) - 5.4)
+        sc1 = (((valor_peso * 4) + 7) / (valor_peso + 90))
         titulo(data_string)
         nome = f'{valor_nome}'
-        peso = f'{valor_peso:.2f}'
-        altura = f'{valor_altura:.2f}'
+        peso = f'{valor_peso}'
+        altura = f'{altura_metros}'
         idade = f'{valor_idade}'
+        sc = f'{sc1:.2f}'
+        pg = f'{pg1:.2f}'
 
         peso_texto = str(peso).replace('.', ',')
         altura_texto = str(altura).replace('.', ',')
-        sc_texto = str(altura).replace('.', ',')
-        pg_texto = str(altura).replace('.', ',')
+        sc_texto = str(sc).replace('.', ',')
+        pg_texto = str(pg).replace('.', ',')
 
         print(f' • {nome}')
         print(f' • Peso {peso_texto}kg')
