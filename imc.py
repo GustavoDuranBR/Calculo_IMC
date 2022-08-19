@@ -16,8 +16,8 @@ sg.theme('Dark Purple7')
 layout = [
     [sg.Text('Calculo IMC, Percentual de gordura e superfície corporal')],
     [sg.Text('Digite seu NOME', size=(14, 1)), sg.Input(size=(30, 1), key='nome')],
-    [sg.Text('Digite seu PESO', size=(14, 1)), sg.Input(size=(10, 1), key='peso')],
-    [sg.Text('Digite sua ALTURA', size=(14, 1)), sg.Input(size=(10, 1), key='altura'), sg.Text('em centimetros')],
+    [sg.Text('Digite seu PESO', size=(14, 1)), sg.Input(size=(10, 1), key='peso'), sg.Text('Kg')],
+    [sg.Text('Digite sua ALTURA', size=(14, 1)), sg.Input(size=(10, 1), key='altura'), sg.Text('em (cm)')],
     [sg.Text('Digite sua IDADE', size=(14, 1)), sg.Input(size=(4, 1), key='idade')],
     [sg.Radio('Homem', 1, key='sexo'), sg.Radio('Mulher', 0, key='sexo')],
     [sg.Button('Calcular'), sg.Button('Limpar', key='clear'), sg.Button('Sair')],
@@ -61,7 +61,7 @@ while True:
         peso = f'{valor_peso}'
         altura = f'{altura_metros}'
         idade = f'{valor_idade}'
-        sc = f'{sc1:.2f}'
+        sc = f'{sc1:.1f}'
         pg = f'{pg1:.2f}'
 
         peso_texto = str(peso).replace('.', ',')
@@ -73,8 +73,8 @@ while True:
         print(f' • Peso {peso_texto}kg')
         print(f' • Altura {altura_texto}')
         print(f' • Idade {idade} anos')
-        print(f' • IMC {imc:.1f}')
-        print(f' • Superfície Corporal {sc_texto}m2')
+        print(f' • IMC {imc:.1f}(kg/m²)')
+        print(f' • Superfície Corporal {sc_texto}(m²)')
         print(f' • Percentual de gordura {pg_texto}%')
 
         if imc < 16:
