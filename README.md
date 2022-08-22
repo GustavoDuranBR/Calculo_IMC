@@ -9,13 +9,13 @@ Procure sempre um profissional da área para uma avaliação e maiores detalhes.
  
 # Cálculo IMC Homem
 
-![img.png](img.png)
-![img_1.png](img_1.png)
+![image](https://user-images.githubusercontent.com/81047389/185970784-8c560087-da3d-4ad2-930b-927fa5ce80a5.png)
+![image](https://user-images.githubusercontent.com/81047389/185970831-add5a9ea-ef1e-4fb4-b8c1-5548621984f9.png)
 
 # Cálculo IMC Mulher
 
-![img_2.png](img_2.png)
-![img_3.png](img_3.png)
+![image](https://user-images.githubusercontent.com/81047389/185970936-4fd85b19-62f8-4d46-9511-8062616fd8e4.png)
+![image](https://user-images.githubusercontent.com/81047389/185970989-bba8ec45-a232-43df-bb77-6ff91589ee63.png)
 
 # Validação 
 
@@ -40,3 +40,5 @@ e pescoço.**\
 #### **Site superfície corporal:** https://arquivos.sbn.org.br/equacoes/eq6.htm
 
 #### **Fórmula: C (m²) = (Peso em kg x 4) + 7 / Peso em kg + 90**
+
+<h5 align="center">🚧 Versão do projeto - 1.0.6 🚀 em construção...🚧</h5>
