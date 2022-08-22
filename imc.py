@@ -59,10 +59,11 @@ while True:
             sexo_entrada = 0
         nome_entrada = valores['nome']
         peso_entrada = valores['peso']
+        peso_str = str(peso_entrada).replace(',', '.')
+        valor_peso = float(peso_str)
         altura_centimetros = valores['altura']
         idade_entrada = valores['idade']
         valor_nome = str(nome_entrada)
-        valor_peso = float(peso_entrada)
         valor_altura = float(altura_centimetros)
         altura_metros = valor_altura / 100
         valor_idade = int(idade_entrada)
