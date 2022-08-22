@@ -40,3 +40,5 @@ e pescoço.**\
 #### **Site superfície corporal:** https://arquivos.sbn.org.br/equacoes/eq6.htm
 
 #### **Fórmula: C (m²) = (Peso em kg x 4) + 7 / Peso em kg + 90**
+
+<h5 align="center">🚧 Versão do projeto - 1.0.6 🚀 em construção...🚧</h5>
