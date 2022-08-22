@@ -180,4 +180,3 @@ while True:
 
 
 janela.close()
-
