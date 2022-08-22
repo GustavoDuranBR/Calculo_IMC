@@ -3,55 +3,73 @@ from datetime import datetime
 
 
 def titulo(tit):
-    print('=' * len(tit))
-    print(f'{tit:^}')
-    print('=' * len(tit))
+    tam = len(tit)
+    print('=' * tam)
+    print(f'    {tit}')
+    print('=' * tam)
 
 
 data = datetime.now()
 data_string = data.strftime('%d/%m/%Y %H:%M')
 
-sg.theme('Dark Purple7')
 
-layout = [
-    [sg.Text('Calculo IMC, Percentual de gordura e superfície corporal')],
-    [sg.Text('Digite seu NOME', size=(14, 1)), sg.Input(size=(30, 1), key='nome')],
-    [sg.Text('Digite seu PESO', size=(14, 1)), sg.Input(size=(10, 1), key='peso'), sg.Text('Kg')],
-    [sg.Text('Digite sua ALTURA', size=(14, 1)), sg.Input(size=(10, 1), key='altura'), sg.Text('em (cm)')],
-    [sg.Text('Digite sua IDADE', size=(14, 1)), sg.Input(size=(4, 1), key='idade')],
-    [sg.Radio('Homem', 1, key='sexo'), sg.Radio('Mulher', 0, key='sexo')],
-    [sg.Button('Calcular'), sg.Button('Limpar', key='clear'), sg.Button('Sair')],
-    [sg.Output(size=(52, 14))],
-    [sg.Text('Desenvolvedor: Gustavo Duran', size=(40, 0))]
-]
+def janela_cadastro():
+    sg.theme('DarkGrey5')
+    layout = [
+        [sg.Text('Calculo IMC, Percentual de gordura e superfície corporal')],
+        [sg.Text('Digite seu NOME', size=(14, 1)), sg.Input(size=(30, 1), key='nome')],
+        [sg.Text('Digite seu PESO', size=(14, 1)), sg.Input(size=(10, 1), key='peso'), sg.Text('Kg')],
+        [sg.Text('Digite sua ALTURA', size=(14, 1)), sg.Input(size=(10, 1), key='altura'), sg.Text('em (cm)')],
+        [sg.Text('Digite sua IDADE', size=(14, 1)), sg.Input(size=(4, 1), key='idade')],
+        [sg.Checkbox('Homem', key='H'), sg.Checkbox('Mulher', key='M')],
+        [sg.Button('Calcular'), sg.Button('Sair')],
+        [sg.Text('Developed by Gustavo Duran', size=(40, 0)), sg.Text('Version 1.0.6')]
+    ]
+    return sg.Window('Calculo IMC', layout, finalize=True)
 
-sexo = 'sexo'
 
-janela = sg.Window('Calculo IMC', layout)
+def janela_saida():
+    sg.theme('DarkGrey5')
+    layout = [
+        [sg.Text('Calculo IMC, Percentual de gordura e superfície corporal')],
+        [sg.Output(size=(52, 14))],
+        [sg.Button('Voltar'), sg.Button('Sair')],
+        [sg.Text('Developed by Gustavo Duran', size=(40, 0)), sg.Text('Version 1.0.6')]
+    ]
+    return sg.Window('Calculo IMC', layout, finalize=True)
+
+
+janela1, janela2 = janela_cadastro(), None
+
+homem = 'H'
+mulher = 'M'
+
 
 while True:
-    evento, valores = janela.read()
-    if evento == sg.WIN_CLOSED or evento == 'Sair':
+    janela, evento, valores = sg.read_all_windows()
+    if janela == janela1 and evento == sg.WIN_CLOSED or evento == 'Sair':
         break
-    if evento == 'Limpar':
-        continue
-    if evento == 'Calcular':
+    if janela == janela2 and evento == sg.WIN_CLOSED or evento == 'Voltar':
+        janela2.hide()
+        janela1.un_hide()
+    if janela == janela1 and evento == 'Calcular':
+        if valores['H']:
+            sexo_entrada = 1
+        else:
+            sexo_entrada = 0
         nome_entrada = valores['nome']
         peso_entrada = valores['peso']
+        peso_str = str(peso_entrada).replace(',', '.')
+        valor_peso = float(peso_str)
         altura_centimetros = valores['altura']
         idade_entrada = valores['idade']
-        sexo_entrada = valores['sexo']
         valor_nome = str(nome_entrada)
-        valor_peso = float(peso_entrada)
         valor_altura = float(altura_centimetros)
         altura_metros = valor_altura / 100
         valor_idade = int(idade_entrada)
         valor_sexo = int(sexo_entrada)
-
-        if sexo == 'M':
-            sexo = 0
-        else:
-            sexo = 1
+        janela2 = janela_saida()
+        janela1.hide()
 
         imc = valor_peso / altura_metros ** 2
         pg1 = ((1.20 * imc) + (0.23 * valor_idade) - (10.8 * valor_sexo) - 5.4)
@@ -162,3 +180,4 @@ while True:
 
 
 janela.close()
+
