@@ -8,3 +8,7 @@
 /.idea/inspectionProfiles/Project_Default.xml
 /venv_imc
 imc.spec
+.idea/
+__pycache__/
+build/
+dist/
