@@ -3,9 +3,10 @@ from datetime import datetime
 
 
 def titulo(tit):
-    print('=' * len(tit))
-    print(f'{tit:^}')
-    print('=' * len(tit))
+    tam = len(tit)
+    print('=' * tam)
+    print(f'    {tit}')
+    print('=' * tam)
 
 
 data = datetime.now()
