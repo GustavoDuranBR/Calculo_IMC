@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 from datetime import datetime
+from decimal import Decimal
 
 
 def titulo(tit):
@@ -58,12 +59,45 @@ while True:
         else:
             sexo_entrada = 0
         nome_entrada = valores['nome']
+        if nome_entrada == '':
+            sg.popup('Opsss!!! Preencha o campo NOME', keep_on_top=True)
+        try:
+            nome_entrada = str(nome_entrada)
+        except:
+            continue
         peso_entrada = valores['peso']
+        if ',' in peso_entrada:
+            if '.' in peso_entrada:
+                peso_entrada = peso_entrada.replace('.', ',')
+            peso_entrada = peso_entrada.replace(',', '.')
+        try:
+            peso_entrada = Decimal(peso_entrada)
+        except:
+            sg.Popup('Digite um PESO válido.', keep_on_top=True)
+            continue
         peso_str = str(peso_entrada).replace(',', '.')
-        valor_peso = float(peso_str)
         altura_centimetros = valores['altura']
+        if ',' in altura_centimetros:
+            if '.' in altura_centimetros:
+                altura_centimetros = altura_centimetros.replace('.', ',')
+            altura_centimetros = altura_centimetros.replace(',', '.')
+        try:
+            altura_centimetros = Decimal(altura_centimetros)
+        except:
+            sg.Popup('Digite sua ALTURA.', keep_on_top=True)
+            continue
         idade_entrada = valores['idade']
+        if ',' in idade_entrada:
+            if '.' in idade_entrada:
+                idade_entrada = idade_entrada.replace('.', ',')
+            idade_entrada = idade_entrada.replace(',', '.')
+        try:
+            idade_entrada = Decimal(idade_entrada)
+        except:
+            sg.Popup('Digite sua IDADE.', keep_on_top=True)
+            continue
         valor_nome = str(nome_entrada)
+        valor_peso = float(peso_str)
         valor_altura = float(altura_centimetros)
         altura_metros = valor_altura / 100
         valor_idade = int(idade_entrada)
@@ -77,7 +111,7 @@ while True:
 
         nome = f'{valor_nome}'
         peso = f'{valor_peso}'
-        altura = f'{altura_metros}'
+        altura = f'{altura_metros:.2f}'
         idade = f'{valor_idade}'
         sc = f'{sc1:.1f}'
         pg = f'{pg1:.1f}'
